@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+
+
+<section class="container mt-80 mb-5">
+    <p class="m-auto text-center w-75">Уже есть аккаунт?</p>
+    <p class="m-auto text-center w-75">Вы можете войти, используя толька почту и пароль</p>
+    <form class="row justify-content-center align-items-center mt-5" method="post">
+        {% csrf_token %}
+      <div class="col-12 col-md-8 col-lg-6 mt-5">
+        <div class="form-floating mb-3">
+          <input type="email" class="form-control" name="email" id="floatingInput" placeholder="E-mail">
+          <label for="floatingInput">E-mail почта</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Пароль">
+          <label for="floatingPassword">Пароль</label>
+        </div>
+        <input class="form-control w-25 mt-3 btn-dark m-auto" type="submit" value="Войти">
+        {% if message %}
+            <div class="alert alert-{{col}} text-center my-3">{{message}}</div>
+        {% endif %}
+        <a href="{% url 'reset_password' %}" class="sim-a d-block mt-3 text-center">Забыли пароль?</a>
+      </div>
+    </form>
+  </section>
+{% endblock %}

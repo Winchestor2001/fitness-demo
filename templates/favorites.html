@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}Избранное{% endblock %}
+
+
+
+{% block content %}
+
+<section class="container mt-5">
+    <h3 class="text-center">Здесь будут хранаться ваши избранные статьи с рекомендациями по правельному питанию, а также понравившиеся вам фитнес программы</h3>
+    <div class="row justify-content-center mt-4 text-center">
+        {% for favorite in favorites %}
+        <div class="col-10 mt-0 border-dark border border-1">
+            <div class="row align-items-center p-3">
+                <div class="col-12 col-sm-2">
+                     <i class="heart fa-solid fa-heart fa-3x" data-favorit="{{favorite.favorite_slug}}"></i>
+                </div>
+                <div class="col-12 col-sm-8">
+                    <a href="{% url 'favorite' favorite.favorite_slug %}"><p class="m-0">{{favorite.favorite_title}}</p></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</section>
+
+
+<script>
+    const heart = document.querySelectorAll('.heart')
+    heart.forEach(item=>{
+        item.addEventListener('click',()=>{
+            item.classList.toggle('fa-solid');
+            item.classList.toggle('fa-regular');
+            
+            let i = item.getAttribute('data-favorit');
+            ajaxFunc(i, true);
+        });
+    });
+  
+    function ajaxFunc(item, status=false){
+      $.ajax({
+          url: "{% url 'check_favorite' %}",
+          type: 'get',
+          data: { slug: item, status: status},
+          success: function (data) {
+            console.log(data);
+            location.reload();
+          }
+      });
+    }
+  </script>
+{% endblock %}

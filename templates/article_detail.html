@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block title %}{{ article.title }}{% endblock %}
+
+{% block content %}
+
+<section class="container mt-4">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-8 col-lg-6">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <p class="text-center title_text">{{ article.title }}</p>
+          <i class="heart {{status}} fa-heart fa-3x" data-favorit="{{ article.slug }}"></i>
+        </div>
+        <center>
+          <img src="{{ article.picture.url }}" class="img-fluid">
+        </center>
+      </div>
+      <p class="col-12 col-md-8 mt-3">
+        {{ article.context|safe }}
+      </p>
+    </div>
+</section>
+
+
+<script>
+  const heart = document.querySelectorAll('.heart')
+  let title_text = document.querySelector('.title_text').textContent
+  heart.forEach(item=>{
+      item.addEventListener('click',()=>{
+          item.classList.toggle('fa-solid');
+          item.classList.toggle('fa-regular');
+          
+          if ('fa-solid' === item.classList[3]) {
+              let i = item.getAttribute('data-favorit');
+              ajaxFunc(i, title_text);
+          } else {
+            let i = item.getAttribute('data-favorit');
+              ajaxFunc(i, title_text, true);
+          }
+      });
+  });
+
+  function ajaxFunc(item, title, status=false){
+    $.ajax({
+        url: "{% url 'check_favorite' %}",
+        type: 'get',
+        data: { slug: item, title: title, status: status},
+        success: function (data) {
+          console.log(data);
+        }
+    });
+  }
+</script>
+{% endblock %}
