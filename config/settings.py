@@ -24,9 +24,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-(15ems6-m!pbo5wb&jk13#98utv&uruy_0l%cl3tz8fxeb-f8$'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = True  # На продакшине нужно поставить False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['*']  # Локал хост или доменное имя 
+
+
+AUTH_USER_MODEL = 'fitness.User'
 
 
 # Application definition
@@ -39,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'fitness',
+    'fitness', 
     'ckeditor',
     'ckeditor_uploader',
 ]
@@ -151,7 +154,7 @@ DATABASES = {
     }
 }
 
-# POSTGRESQL
+# Database POSTGRESQL
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -186,7 +189,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ru'
 
 TIME_ZONE = 'UTC'
 

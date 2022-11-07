@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Профиль{% endblock %}
+
+{% block content %}
+
+<section class="container mt-3">
+    <h4 class="m-auto text-center w-75">Ваши данные</h4>
+    <form class="row justify-content-center" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="col-12 col-md-8 col-lg-6 mt-5">
+          <div class="form-floating mb-3">
+            <input type="email" class="form-control" name="email" id="floatingInput" placeholder="E-mail" required value="{{ user.email }}">
+            <label for="floatingInput">E-mail почта</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="fname" id="floatingInput" placeholder="Имя" required value="{{ user.first_name }}">
+            <label for="floatingInput">Имя</label>
+        </div>
+        <div class="form-floating mb-3">
+            <input type="text" class="form-control" name="lname" id="floatingInput" placeholder="Фамилия" required value="{{ user.last_name }}">
+            <label for="floatingInput">Фамилия</label>
+        </div>
+        <!-- <div class="form-floating mb-3">
+            <input type="password" class="form-control" name="password" id="floatingPassword" placeholder="Пароль" required value="{{ user.password }}">
+            <label for="floatingPassword">Пароль</label>
+        </div> -->
+        <div>
+            <input type="file" name="avatar" class="form-control form-control-lg" id="floatingInput">
+        </div>
+        <div class="d-flex justify-content-center mt-3">
+            <button class="btn btn-success px-4">Сохранить</button>
+        </div>
+        </div>
+    </form>
+</section>
+
+{% endblock %}

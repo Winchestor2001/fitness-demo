@@ -32,11 +32,33 @@
     padding: 0;
 
 }
+.user_img_a{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    /* border: 3px solid red; */
+    display: block;
+    position: relative;
+}
+.user_img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    border-radius: 50%;
+    padding: 0 !important;
+}
+.green p {
+    line-height: 37px;
+}
+.brr-0{
+    border-radius:0 !important ;
+}
 .u-dark{
     display: inline-block;
     border-radius: 20px;
     width: 40px;
-    height: 5px;
+    height: 2px;
     background-color: #000;
 }
 .ul-dark{
@@ -171,6 +193,68 @@ a:hover{
 .cursor{
     cursor: pointer !important;
 }
+.p_content p{
+    text-align: center;
+}
+/* PRELOADER STYLE */
+#preloader{
+    width: 100%;
+    height: 100vh;
+    position: fixed;    
+    backdrop-filter: blur(50px);
+    z-index: 1000;
+    opacity: 1;
+    visibility: visible;
+}
+.loader {
+    max-width: 15rem;
+    width: 100%;
+    stroke-linecap: round;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+circle {
+    fill: none;
+    stroke-width: 3.5;
+    animation-name: preloader;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    transform-origin: 170px 170px;
+    will-change: transform;
+}
+circle:nth-of-type(1) {
+    stroke-dasharray: 550px;
+}
+circle:nth-of-type(2) {
+    stroke-dasharray: 500px;
+}
+circle:nth-of-type(3) {
+    stroke-dasharray: 450px;
+}
+circle:nth-of-type(4) {
+    stroke-dasharray: 300px;
+}
+circle:nth-of-type(1) {
+    animation-delay: -0.15s;
+}
+circle:nth-of-type(2) {
+    animation-delay: -0.3s;
+}
+circle:nth-of-type(3) {
+    animation-delay: -0.45s;
+}
+circle:nth-of-type(4) {
+    animation-delay: -0.6s;
+}
+@keyframes preloader {
+    50% {
+        transform: rotate(360deg);
+   }
+}
+/* END PRELOADER STYLE */
 @media screen and (max-width:560px){
     .chat{
         width: 85%;

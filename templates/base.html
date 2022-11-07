@@ -21,9 +21,13 @@
     <link rel="stylesheet" href="{% static 'bootstrap-5.2.2-dist/css/bootstrap.min.css' %}">
     <!-- custom style -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.jpg' %}">
 </head>
 
 <body>
+
+    {% include 'includes/preloader.html' %}
 
     {% include 'includes/navbar.html' %}
 

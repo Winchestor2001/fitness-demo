@@ -23,3 +23,5 @@ class SiteInfoAdmin(admin.ModelAdmin):
     list_display = ['email', 'tel']
 
 
+
+admin.site.register(User)
